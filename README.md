@@ -31,26 +31,33 @@ the counts are there so you can check nothing was missed.
 | Brand name | `RadioSats` | 10 in `index.html`, plus `aria-label` in the 3 SVGs |
 | Helpline, displayed | `+1 (786) 454-4567` | 11 |
 | Helpline, `tel:` form | `+17864544567` | 13 |
-| Email | `Info@radiosats.com` | 5 |
+| Email | `Info@radiosats.com` | 6 |
 | Domain (`canonical`, `og:url`) | `https://radiosats.com` | 5 |
 
-The wordmark is real HTML text in the page markup, not SVG `<text>` — webfonts don't apply
-inside an `<img>`, so the SVGs carry the mark only and the brand name lives in `index.html`.
+The logo is an `<img>` pointing at `logo.svg` (header) and `logo-light.svg` (footer). The
+wordmark lives inside those files as SVG `<text>` — two lines, `RadioSats` over `SUPPORT` —
+so renaming the brand means editing the SVGs as well as `index.html`.
 
 ## Design tokens
 
-Everything is driven by custom properties at the top of `assets/css/style.css`. The page
-runs on two paper stocks and three inks:
+Everything is driven by custom properties at the top of `assets/css/style.css`:
 
 ```css
---paper:   #FAF8F4;   /* warm newsprint — the page ground   */
---kraft:   #F1ECE3;   /* second stock — services, why-us    */
---ink:     #14161C;   /* headings, phone numbers            */
---primary: #B4310F;   /* vermillion — action ink, fills only pressables */
---deep:    #16283C;   /* ink-blue — topbar, stats, footer   */
+--brand:      #ff6a00;   /* primary orange  */
+--brand-2:    #ffb703;   /* amber accent    */
+--brand-deep: #e04e00;   /* pressed / hover */
+--accent:     #00b5d8;   /* cyan highlight  */
+--ink:        #10233d;   /* headings        */
 ```
 
-Change those and the header, buttons, icons, stats band and mobile call bar all follow.
+Change those and the header, buttons, icons, gradients, stats band and mobile call bar all
+follow.
+
+## Design history
+
+The site has had two looks. The current one is the original orange gradient design. A
+deep-red editorial redesign also exists in the history — restore it with
+`git checkout c82de2a -- index.html assets/` if you ever want it back.
 
 ## Page sections
 
@@ -91,6 +98,8 @@ If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
   real 800/888 number.
 - Confirm `https://radiosats.com` is the final domain before going live — it's baked into
   the `canonical` and `og:url` tags.
+- **`og-cover.png` doesn't match the current design.** It was drawn for the deep-red
+  redesign, so link previews on WhatsApp, Facebook and X will look nothing like the page.
 
 ## Compliance note
 

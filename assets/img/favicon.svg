@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="64" height="64" role="img" aria-label="RadioSats">
-  <rect x=".5" y=".5" width="33" height="33" rx="3" fill="#FAF8F4" stroke="#14161C" stroke-width="1"/>
-  <rect x="8" y="22.5" width="4.5" height="4.5" fill="#B4310F"/>
-  <path d="M13.5 25a9.5 9.5 0 0 0-3.2-6.3" fill="none" stroke="#B4310F" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M18.6 25a14.5 14.5 0 0 0-4.8-10.4" fill="none" stroke="#B4310F" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M23.7 25a19.5 19.5 0 0 0-6.4-14" fill="none" stroke="#B4310F" stroke-width="2.4" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff6a00"/>
+      <stop offset="1" stop-color="#ffb703"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#f)"/>
+  <circle cx="24" cy="45" r="6" fill="#fff"/>
+  <path d="M24 45 L43 18" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M33 16a18 18 0 0 1 12.5 12.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".95"/>
+  <path d="M30 6.5a27 27 0 0 1 19 19" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".5"/>
 </svg>
