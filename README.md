@@ -1,4 +1,4 @@
-# RadioSat Support — landing page
+# RadioSats — 24/7 car satellite radio helpline
 
 A single-page, call-driven landing site. Plain HTML + CSS + JS with Bootstrap 5.3 from a
 CDN. No build step, no npm, no server code — drop the folder on any host and it works.
@@ -7,9 +7,9 @@ CDN. No build step, no npm, no server code — drop the folder on any host and i
 radio-support-site/
 ├── index.html              the whole page
 ├── assets/
-│   ├── css/style.css       all styling; brand colours in :root at the top
+│   ├── css/style.css       all styling; design tokens in :root at the top
 │   ├── js/main.js          sticky header, scroll spy, reveal, count-up, call tracking
-│   └── img/                logo.svg, logo-light.svg (footer), favicon.svg
+│   └── img/                logo.svg, logo-light.svg (footer), favicon.svg, og-cover.png
 └── README.md
 ```
 
@@ -21,35 +21,36 @@ Just double-click `index.html`. Or serve it locally:
 python -m http.server 8000     # then open http://localhost:8000
 ```
 
-## Make it yours — 6 find/replace passes
+## Live details
 
-Open `index.html` and replace every occurrence:
+These are set throughout `index.html`. To change one, find and replace every occurrence —
+the counts are there so you can check nothing was missed.
 
-| Find | Replace with |
-| --- | --- |
-| `RadioSat Support` | your brand name |
-| `+1 (000) 000-0000` | your phone, as you want it *displayed* |
-| `+10000000000` | your phone in `tel:` format (digits only, leading `+`) |
-| `support@example.com` | your email |
-| `https://example.com` | your live domain |
-| the `<!-- ==== EDIT: your real registered entity details ==== -->` block in the footer | your registered company name, number and address |
+| Detail | Current value | Occurrences |
+| --- | --- | --- |
+| Brand name | `RadioSats` | 10 in `index.html`, plus `aria-label` in the 3 SVGs |
+| Helpline, displayed | `+1 (786) 454-4567` | 11 |
+| Helpline, `tel:` form | `+17864544567` | 13 |
+| Email | `Info@radiosats.com` | 5 |
+| Domain (`canonical`, `og:url`) | `https://radiosats.com` | 5 |
 
-Then swap the wordmark text inside `assets/img/logo.svg` and `logo-light.svg`
-(they're plain SVG — the text is editable in any text editor).
+The wordmark is real HTML text in the page markup, not SVG `<text>` — webfonts don't apply
+inside an `<img>`, so the SVGs carry the mark only and the brand name lives in `index.html`.
 
-## Brand colours
+## Design tokens
 
-Everything is driven by custom properties at the top of `assets/css/style.css`:
+Everything is driven by custom properties at the top of `assets/css/style.css`. The page
+runs on two paper stocks and three inks:
 
 ```css
---brand:      #ff6a00;   /* primary       */
---brand-2:    #ffb703;   /* gradient end  */
---brand-deep: #e04e00;   /* hover/pressed */
---ink:        #10233d;   /* headings      */
+--paper:   #FAF8F4;   /* warm newsprint — the page ground   */
+--kraft:   #F1ECE3;   /* second stock — services, why-us    */
+--ink:     #14161C;   /* headings, phone numbers            */
+--primary: #B4310F;   /* vermillion — action ink, fills only pressables */
+--deep:    #16283C;   /* ink-blue — topbar, stats, footer   */
 ```
 
-Change those four and the header, buttons, icons, gradients, stats band and mobile call
-bar all follow.
+Change those and the header, buttons, icons, stats band and mobile call bar all follow.
 
 ## Page sections
 
@@ -81,10 +82,15 @@ If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
 
 ## Still to do
 
-- `privacy.html` and `terms.html` — the footer links to them but the files don't exist yet.
-  Google Ads generally won't approve a support-service site without them.
-- `assets/img/og-cover.png` — 1200×630 social share image referenced in the meta tags.
-- Point the `canonical` and `og:url` tags at the real domain before going live.
+- **`privacy.html` and `terms.html` don't exist**, but the footer links to them — both are
+  dead links. Google Ads generally won't approve a support-service site without them.
+- **The footer entity block is still dummy data** — `Reg. no. 000000000` and
+  `123 Example Street, City, ST 00000`. Search `index.html` for `EDIT:`.
+- **"Toll-free" is inaccurate.** The hero trust chips advertise the line as toll-free, but
+  786 is a Miami area code, so callers pay normal rates. Either change the wording or use a
+  real 800/888 number.
+- Confirm `https://radiosats.com` is the final domain before going live — it's baked into
+  the `canonical` and `og:url` tags.
 
 ## Compliance note
 
