@@ -4,27 +4,28 @@
    ========================================================================== */
 
 :root {
-  /* --- BRAND PALETTE (edit these) --- */
-  --brand:        #ff6a00;   /* primary orange  */
-  --brand-2:      #ffb703;   /* amber accent    */
-  --brand-deep:   #e04e00;   /* pressed / hover */
-  --accent:       #00b5d8;   /* cyan highlight  */
-  --ink:          #10233d;   /* headings        */
-  --ink-soft:     #55677f;   /* body text       */
+  /* --- MIAMI NIGHTS PALETTE --- */
+  --brand:        #0F4953;
+  --brand-2:      #17707E;
+  --brand-deep:   #0A363E;
+  --on-brand:     #FFFFFF;   /* text that sits on --grad */
+  --accent:       #CBF5EF;
+  --ink:          #0F4953;
+  --ink-soft:     #4E7079;
   --paper:        #ffffff;
-  --paper-soft:   #fff8f1;   /* warm section bg */
-  --line:         #e8edf5;
-  --ok:           #16a34a;
+  --paper-soft:   #F1FAF8;
+  --line:         #DCEDEA;
+  --ok:           #157F6B;
 
-  --grad:      linear-gradient(120deg, var(--brand) 0%, var(--brand-2) 100%);
-  --grad-deep: linear-gradient(120deg, #0b1b30 0%, #1d3a63 55%, #2b5a94 100%);
+  --grad:      linear-gradient(120deg, #0F4953 0%, #17707E 100%);
+  --grad-deep: linear-gradient(120deg, #0A363E 0%, #0F4953 55%, #17707E 100%);
 
   --radius:     18px;
   --radius-lg:  26px;
   --shadow-sm:  0 2px 10px rgba(16, 35, 61, .06);
   --shadow:     0 14px 40px rgba(16, 35, 61, .10);
   --shadow-lg:  0 26px 70px rgba(16, 35, 61, .16);
-  --ring:       0 0 0 4px rgba(255, 106, 0, .18);
+  --ring:       0 0 0 4px rgba(15,73,83,.26);
 }
 
 /* --------------------------------------------------------------- base --- */
@@ -531,4 +532,20 @@ a { text-decoration: none; transition: color .2s ease; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+
+/* ---- Miami Nights: contrast corrections ---- */
+.topbar { color: var(--on-brand); }
+.btn-call { color: var(--on-brand); box-shadow: 0 10px 26px rgba(15,73,83,.34); }
+.btn-call:hover, .btn-call:focus-visible { color: var(--on-brand); }
+body { background: #F9FCFB; }
+.grad-text { background: linear-gradient(120deg, #F98E6E 0%, #FFCFD2 100%); -webkit-background-clip: text; background-clip: text; }
+
+/* topbar links follow the on-gradient text colour */
+.topbar a, .topbar a:hover { color: var(--on-brand); }
+/* headline accent: deepen the coral so it stays legible on white to the last word */
+.grad-text {
+  background: linear-gradient(120deg, #E96A44 0%, #D9522B 100%);
+  -webkit-background-clip: text; background-clip: text;
 }

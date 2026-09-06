@@ -40,18 +40,22 @@ so renaming the brand means editing the SVGs as well as `index.html`.
 
 ## Design tokens
 
-Everything is driven by custom properties at the top of `assets/css/style.css`:
+Everything is driven by custom properties at the top of `assets/css/style.css`. The site runs
+on the Miami Nights palette:
 
 ```css
---brand:      #ff6a00;   /* primary orange  */
---brand-2:    #ffb703;   /* amber accent    */
---brand-deep: #e04e00;   /* pressed / hover */
---accent:     #00b5d8;   /* cyan highlight  */
---ink:        #10233d;   /* headings        */
+--brand:      #0F4953;   /* deep teal - buttons, top strip, headings */
+--brand-2:    #17707E;   /* lighter teal - gradient end              */
+--on-brand:   #FFFFFF;   /* text that sits on the gradient           */
+--accent:     #CBF5EF;   /* mint - tints and chips                   */
+--paper-soft: #F1FAF8;   /* section background                       */
 ```
 
-Change those and the header, buttons, icons, gradients, stats band and mobile call bar all
-follow.
+The coral `#F98E6E` from the palette is the highlight, not the lead — it carries the second
+headline line and small accents. On white it is deepened to `#D9522B` (see the corrections
+block at the end of the stylesheet) because at its original value the end of the headline
+faded to unreadable. Mint, near-white `#F9FCFB` and pale pink `#FFCFD2` are background tints
+only: all three are too light to put white text on.
 
 ## Design history
 
