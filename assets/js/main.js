@@ -1,11 +1,16 @@
 /* =========================================================================
    RadioSat Support — page behaviour
    Vanilla JS, no dependencies beyond the Bootstrap bundle already loaded.
+   Works over file:// — no fetch, no modules, no server.
    ========================================================================= */
 (function () {
   'use strict';
 
-  /* ---------------------------------------------- header shadow on scroll */
+  /* ------------------------------------------- header rule on scroll
+     .is-stuck thickens the header's bottom hairline from --border to
+     --rule-strong. No shadow: the page has one blurred shadow and it
+     lives under the mobile call bar.
+     ---------------------------------------------------------------- */
   var header = document.getElementById('siteHeader');
   var onScroll = function () {
     if (!header) return;
@@ -26,7 +31,10 @@
     });
   }
 
-  /* ------------------------------------------- highlight the active link */
+  /* ------------------------------------------- highlight the active link
+     The active nav item is signalled twice — the vermillion underline and
+     the ink change — so nothing lives only in a hover state.
+     ------------------------------------------------------------------- */
   var sections = Array.prototype.slice.call(
     document.querySelectorAll('main section[id]')
   );
@@ -48,8 +56,11 @@
     sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* --------------------------------------------------- reveal on scroll */
-  var revealables = document.querySelectorAll('.reveal');
+  /* --------------------------------------------------- reveal on scroll
+     .sec-rule is in the list so the section rules draw themselves in from
+     the left as each section arrives. No second observer, no listener.
+     ------------------------------------------------------------------- */
+  var revealables = document.querySelectorAll('.reveal, .sec-rule');
   if ('IntersectionObserver' in window) {
     var revealer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
@@ -63,7 +74,12 @@
     revealables.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ------------------------------------------------- count-up the stats */
+  /* ------------------------------------------------- count-up the stats
+     .stat-num carries font-variant-numeric: tabular-nums lining-nums in
+     the stylesheet. That is load-bearing: this loop rewrites textContent
+     on every frame, and proportional figures would make the band reflow
+     its own width mid-count. Do not remove it.
+     ------------------------------------------------------------------- */
   var counters = document.querySelectorAll('.stat-num[data-count]');
   var animateCount = function (el) {
     var target = parseInt(el.getAttribute('data-count'), 10);
@@ -99,8 +115,9 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* ----------------------------------------------- call conversion hook
-     Every phone link carries data-call. Drop your ad-platform conversion
-     call inside this handler and all CTAs are tracked at once.
+     Every phone link carries data-call — twelve of them. Drop your
+     ad-platform conversion call inside this handler and all CTAs are
+     tracked at once.
      ------------------------------------------------------------------- */
   document.querySelectorAll('a[data-call]').forEach(function (link) {
     link.addEventListener('click', function () {

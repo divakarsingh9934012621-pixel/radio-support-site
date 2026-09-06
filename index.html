@@ -31,16 +31,25 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 
-  <!-- Fonts -->
+  <!-- Fonts — both families requested as variable ranges, Fraunces roman + italic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap">
 
-  <!-- Bootstrap 5.3 + icons -->
+  <!-- Bootstrap 5.3 + icons (grid, collapse, accordion only) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- If scripting is off, nothing that reveals on scroll may stay hidden. -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .sec-rule::before { transform: scaleX(1) !important; }
+    </style>
+  </noscript>
 
   <!-- Local business schema (helps Google show the phone number) -->
   <script type="application/ld+json">
@@ -64,399 +73,140 @@
 
 <body>
 
-  <!-- ============================================================ HEADER -->
-  <div class="topbar py-2">
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <span><i class="bi bi-clock-history me-1"></i> Open 24/7 · No hold music, no queue</span>
-        <a href="tel:+10000000000" data-call>
-          <i class="bi bi-telephone-fill me-1"></i> Helpline: +1 (000) 000-0000
-        </a>
-      </div>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- =========================================================== TOPBAR -->
+  <div class="topbar">
+    <div class="container topbar__in">
+      <p>
+        <span class="live-dot" aria-hidden="true"></span>
+        Open 24/7<span class="d-none d-sm-inline"> &mdash; no hold music, no queue</span>
+      </p>
+      <p>
+        <span class="topbar__lab">Helpline</span>
+        <span class="topbar__sep" aria-hidden="true"></span>
+        <a class="topbar__num" href="tel:+10000000000" data-call>+1 (000) 000-0000</a>
+      </p>
     </div>
   </div>
 
+  <!-- =========================================================== HEADER -->
   <header class="site-header sticky-top" id="siteHeader">
     <div class="container">
-      <nav class="navbar navbar-expand-lg py-3">
-        <a class="navbar-brand" href="#top">
-          <img src="assets/img/logo.svg" alt="RadioSat Support">
+      <nav class="navbar navbar-expand-lg" aria-label="Primary">
+
+        <a class="brand" href="#top">
+          <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+            <rect x=".5" y=".5" width="33" height="33" rx="3" fill="none" stroke="currentColor" stroke-width="1"/>
+            <rect x="8" y="23" width="4" height="4" fill="#B4310F"/>
+            <path d="M13 25a9 9 0 0 0-3-6" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 25a14 14 0 0 0-4.6-10" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+            <path d="M23 25a19 19 0 0 0-6.2-13.6" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 28.5h22" stroke="#C9C2B4" stroke-width="1"/>
+          </svg>
+          <span class="brand-word">
+            <span class="brand-name">RadioSat Support</span>
+            <span class="brand-sub">24/7 Helpline</span>
+          </span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
           aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+          <ul class="navbar-nav align-items-lg-center" role="list">
             <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
             <li class="nav-item"><a class="nav-link" href="#why-us">Why us</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-              <a class="btn btn-call w-100" href="tel:+10000000000" data-call>
-                <i class="bi bi-telephone-fill me-2"></i>Call now
-              </a>
-            </li>
           </ul>
+          <a class="btn-call btn-call-sm nav-cta" href="tel:+10000000000" data-call>
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>Call now
+          </a>
         </div>
+
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="top" tabindex="-1">
 
-    <!-- ============================================================ HERO -->
-    <section class="hero">
+    <!-- ================================================= § 01 — THE HERO -->
+    <section class="sec sec--hero sec--paper" id="hero">
       <div class="container">
-        <div class="row align-items-center g-5">
+        <div class="row sec-grid">
 
-          <div class="col-lg-7">
-            <span class="live-pill mb-3">
-              <span class="live-dot"></span> Specialists online right now
-            </span>
+          <div class="col-lg-7 hero__lead">
+            <p class="kicker">
+              <span class="folio">§ 01</span>
+              <i aria-hidden="true"></i>
+              <span class="k-name">The helpline</span>
+            </p>
 
-            <h1 class="mb-3">
-              Car satellite radio gone quiet?<br>
-              <span class="grad-text">We&rsquo;ll get it playing again.</span>
+            <h1>
+              <span class="l">Car satellite radio</span>
+              <span class="l">gone quiet?</span>
+              <em>We&rsquo;ll get it playing again.</em>
             </h1>
 
-            <p class="lead-sm mb-4" style="max-width: 560px;">
+            <p class="deck drop">
               Activation stuck, signal dropping, channels missing or a billing question you
               can&rsquo;t resolve online &mdash; call and talk it through with a real person.
               No tickets, no chatbots, no callback windows.
             </p>
 
-            <div class="mb-4">
-              <a class="hero-phone" href="tel:+10000000000" data-call>
-                <i class="bi bi-telephone-inbound-fill"></i> +1 (000) 000-0000
-              </a>
-              <div class="small mt-1">Toll&#8209;free &middot; open 24 hours, 7 days a week</div>
-            </div>
+            <hr class="hair">
 
-            <div class="d-flex flex-wrap gap-3 mb-4">
-              <a class="btn btn-call btn-call-lg" href="tel:+10000000000" data-call>
-                <i class="bi bi-telephone-fill me-2"></i>Talk to a specialist
-              </a>
-              <a class="btn btn-ghost btn-call-lg" href="#services">See what we fix</a>
-            </div>
+            <a class="phone-hero" href="tel:+10000000000" data-call>
+              <i class="bi bi-telephone-inbound-fill" aria-hidden="true"></i>
+              <span>+1 (000) 000-0000</span>
+            </a>
 
-            <div class="d-flex flex-wrap trust-row">
-              <span><i class="bi bi-check-circle-fill"></i> Under 30&nbsp;s average pickup</span>
-              <span><i class="bi bi-check-circle-fill"></i> Every vehicle make</span>
-              <span><i class="bi bi-check-circle-fill"></i> No fix, no fee</span>
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="hero-card">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3 class="mb-0" style="font-size:1.05rem;">Live line status</h3>
-                <span class="chip-ok"><i class="bi bi-broadcast me-1"></i>Open</span>
-              </div>
-
-              <div class="signal-row mb-4">
-                <i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-
-              <div class="status-line">
-                <span>Current wait</span><b>&lt; 30 seconds</b>
-              </div>
-              <div class="status-line">
-                <span>Agents available</span><span class="chip-ok">Yes</span>
-              </div>
-              <div class="status-line">
-                <span>Online self&#8209;service tools</span><span class="chip-warn">Phone only</span>
-              </div>
-              <div class="status-line">
-                <span>Languages</span><b>English</b>
-              </div>
-
-              <a class="btn btn-call w-100 mt-4" href="tel:+10000000000" data-call>
-                <i class="bi bi-telephone-fill me-2"></i>Call +1 (000) 000-0000
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================== FEATURE CARDS -->
-    <section class="section pb-0">
-      <div class="container">
-        <div class="text-center mb-5 reveal">
-          <span class="eyebrow"><i class="bi bi-tools"></i> What we handle</span>
-          <h2 class="mb-3">Four problems, one phone call</h2>
-          <p class="lead-sm mx-auto" style="max-width:640px;">
-            Most satellite radio faults fall into the same handful of buckets. Here&rsquo;s where
-            our specialists spend their day.
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-sm-6 col-lg-3 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-power"></i></div>
-              <h3>Radio &amp; audio</h3>
-              <p>Dead head unit, silent speakers, distorted or cutting-out sound, presets that
-                won&rsquo;t hold.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-reception-4"></i></div>
-              <h3>Signal &amp; reception</h3>
-              <p>&ldquo;Acquiring signal&rdquo; that never finishes, drops under bridges, antenna and
-                cable checks.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-collection-play"></i></div>
-              <h3>Channels</h3>
-              <p>Missing stations, a lineup that shrank overnight, locked or greyed-out channels.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-credit-card-2-front"></i></div>
-              <h3>Subscription</h3>
-              <p>Plan questions, renewals, transferring service to a new vehicle, account access.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================== STATS -->
-    <section class="stats-band section my-5">
-      <div class="container">
-        <div class="row text-center g-4">
-          <div class="col-6 col-lg-3">
-            <div class="stat-num" data-count="30" data-prefix="&lt;" data-suffix="s">&lt;30s</div>
-            <div class="stat-label">Average pickup time</div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="stat-num">24/7</div>
-            <div class="stat-label">Every day of the year</div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="stat-num" data-count="100" data-suffix="%">100%</div>
-            <div class="stat-label">Live humans, no bots</div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="stat-num">All</div>
-            <div class="stat-label">Vehicle makes &amp; models</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================== NOTICE -->
-    <section class="pb-5">
-      <div class="container">
-        <div class="notice d-flex gap-3 align-items-start reveal">
-          <i class="bi bi-info-circle-fill fs-4 mt-1"></i>
-          <div>
-            <h3 class="mb-1" style="font-size:1.08rem;">Self-service tools are unavailable right now</h3>
-            <p class="mb-0">
-              Online refresh and diagnostic tools are temporarily offline for maintenance.
-              Everything they used to do can still be done over the phone &mdash;
-              <a class="fw-bold text-brand" href="tel:+10000000000" data-call>call +1 (000) 000-0000</a>
-              and a specialist will run it for you.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================== SERVICES -->
-    <section class="section bg-soft" id="services">
-      <div class="container">
-        <div class="text-center mb-5 reveal">
-          <span class="eyebrow"><i class="bi bi-list-check"></i> Services</span>
-          <h2 class="mb-3">What a call actually gets you</h2>
-          <p class="lead-sm mx-auto" style="max-width:660px;">
-            No scripts read at you. A specialist works the problem with you, on the line,
-            until the radio plays or we tell you honestly that it needs a shop.
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-broadcast-pin"></i></div>
-              <div>
-                <h3>Activation &amp; re-activation</h3>
-                <p>New vehicle, used vehicle, or a trial that never switched on. We walk through
-                  radio ID lookup, send the refresh, and stay on the line until channels appear.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-reception-2"></i></div>
-              <div>
-                <h3>Signal &amp; reception diagnosis</h3>
-                <p>We isolate whether it&rsquo;s the antenna, the cable, the mount, the location or
-                  the receiver &mdash; so you don&rsquo;t pay a shop to find out.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-grid-3x3-gap"></i></div>
-              <div>
-                <h3>Channel lineup restore</h3>
-                <p>Channels vanished after an update or a plan change? We check what your package
-                  should carry and rebuild the lineup on the receiver.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-receipt"></i></div>
-              <div>
-                <h3>Subscription &amp; billing guidance</h3>
-                <p>Understand what you&rsquo;re on, what renews when, and how to move service to a
-                  different car &mdash; explained in plain English.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-bluetooth"></i></div>
-              <div>
-                <h3>Pairing &amp; head-unit setup</h3>
-                <p>Bluetooth handoff, steering-wheel controls, presets, and factory head units that
-                  lost their settings after a battery change.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="service-item">
-              <div class="ico"><i class="bi bi-life-preserver"></i></div>
-              <div>
-                <h3>Second-opinion troubleshooting</h3>
-                <p>Already been round the loop elsewhere? Call and we&rsquo;ll tell you what&rsquo;s
-                  actually wrong &mdash; even if the answer is &ldquo;this one needs hardware.&rdquo;</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================= HOW -->
-    <section class="section" id="how">
-      <div class="container">
-        <div class="text-center mb-5 reveal">
-          <span class="eyebrow"><i class="bi bi-signpost-2"></i> How it works</span>
-          <h2 class="mb-0">Three steps, usually one call</h2>
-        </div>
-
-        <div class="row g-4 g-lg-5">
-          <div class="col-md-4 reveal">
-            <div class="step">
-              <div class="step-num">1</div>
-              <h3 class="mb-2">Call the helpline</h3>
-              <p class="mb-0">Dial +1 (000) 000-0000 from anywhere in the US. A specialist picks up
-                in under half a minute &mdash; day or night.</p>
-            </div>
-          </div>
-          <div class="col-md-4 reveal">
-            <div class="step">
-              <div class="step-num">2</div>
-              <h3 class="mb-2">Describe the symptom</h3>
-              <p class="mb-0">Tell us what the radio is doing. Have the vehicle nearby if you can
-                &mdash; we may ask you to read the radio ID off the screen.</p>
-            </div>
-          </div>
-          <div class="col-md-4 reveal">
-            <div class="step">
-              <div class="step-num">3</div>
-              <h3 class="mb-2">Fix it on the line</h3>
-              <p class="mb-0">We work the steps with you until sound is back, or give you a
-                straight answer about what the vehicle needs next.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center mt-5 reveal">
-          <a class="btn btn-call btn-call-lg" href="tel:+10000000000" data-call>
-            <i class="bi bi-telephone-fill me-2"></i>Start with a call
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================== WHY US -->
-    <section class="section bg-soft" id="why-us">
-      <div class="container">
-        <div class="row align-items-center g-5">
-
-          <div class="col-lg-6 reveal">
-            <span class="eyebrow"><i class="bi bi-shield-check"></i> Why us</span>
-            <h2 class="mb-3">Built to answer the phone</h2>
-            <p class="lead-sm mb-4">
-              Most support lines are designed to deflect you into a help centre.
-              Ours is designed around the one thing people actually want at 11&nbsp;pm on a
-              highway shoulder: someone picking up.
+            <p class="liveness">
+              <span class="lv"><span class="live-dot" aria-hidden="true"></span>Specialists online right now</span>
+              <span class="rule-v" aria-hidden="true"></span>
+              <span class="lv lv--muted">Toll-free &middot; 24 hours &middot; 7 days</span>
             </p>
 
-            <ul class="check-list">
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                <span><b>No hold queue</b>Average pickup under 30 seconds, measured across every
-                  call we take &mdash; not a marketing number.</span>
-              </li>
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                <span><b>Trained on real hardware</b>Specialists who have handled factory and
-                  aftermarket receivers across every major vehicle make.</span>
-              </li>
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                <span><b>Straight answers</b>If it&rsquo;s a dead antenna or a failed tuner, we say so
-                  instead of keeping you on the line.</span>
-              </li>
-              <li>
-                <i class="bi bi-check-circle-fill"></i>
-                <span><b>Independent</b>We work for you, not for a manufacturer&rsquo;s call-deflection
-                  target.</span>
-              </li>
+            <div class="cta-row">
+              <a class="btn-call btn-call-lg" href="tel:+10000000000" data-call>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>Talk to a specialist
+              </a>
+              <a class="link-cta" href="#services">See what we fix <span aria-hidden="true">&darr;</span></a>
+            </div>
+
+            <ul class="trust" role="list">
+              <li><span class="ord-sm" aria-hidden="true">01</span><span class="lab">Under 30s avg pickup</span></li>
+              <li><span class="ord-sm" aria-hidden="true">02</span><span class="lab">Every vehicle make</span></li>
+              <li><span class="ord-sm" aria-hidden="true">03</span><span class="lab">No fix, no fee</span></li>
             </ul>
           </div>
 
-          <div class="col-lg-6 reveal">
-            <div class="hero-card">
-              <div class="d-flex align-items-center gap-3 mb-4">
-                <div class="feature-icon mb-0"><i class="bi bi-headset"></i></div>
-                <div>
-                  <h3 class="mb-0" style="font-size:1.1rem;">Talk to a person, first ring</h3>
-                  <div class="small">No IVR maze. No &ldquo;press 4 for&hellip;&rdquo;</div>
-                </div>
+          <div class="col-lg-5 hero__side split-rule">
+            <div class="proof hero__panel">
+              <div class="proof-head">
+                <h2 class="mlabel with-dot"><span class="live-dot" aria-hidden="true"></span>Live line status</h2>
+                <span class="mlabel">Open</span>
               </div>
 
-              <div class="status-line"><span>Mon &ndash; Sun</span><b>24 hours</b></div>
-              <div class="status-line"><span>Holidays</span><b>Open</b></div>
-              <div class="status-line"><span>Callback required</span><b>Never</b></div>
-              <div class="status-line"><span>Diagnosis over the phone</span><b>Included</b></div>
+              <div class="signal-plot" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
 
-              <a class="btn btn-call w-100 mt-4" href="tel:+10000000000" data-call>
-                <i class="bi bi-telephone-fill me-2"></i>+1 (000) 000-0000
+              <dl class="ledger">
+                <div><dt>Current wait</dt><dd>&lt; 30 seconds</dd></div>
+                <div><dt>Agents available</dt><dd><span class="chip-ok">Yes</span></dd></div>
+                <div><dt>Online self-service tools</dt><dd class="is-note">Phone only</dd></div>
+                <div><dt>Languages</dt><dd>English</dd></div>
+              </dl>
+
+              <a class="btn-call btn-call-block" href="tel:+10000000000" data-call>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                <span class="num">Call +1 (000) 000-0000</span>
               </a>
-              <div class="text-center small mt-2">or email
-                <a class="text-brand fw-bold" href="mailto:support@example.com">support@example.com</a>
-              </div>
             </div>
           </div>
 
@@ -464,23 +214,336 @@
       </div>
     </section>
 
-    <!-- ============================================================= FAQ -->
-    <section class="section" id="faq">
+    <!-- ========================================== § 02 — THE FAULT LEDGER -->
+    <section class="sec sec--paper" id="handles">
       <div class="container">
-        <div class="text-center mb-5 reveal">
-          <span class="eyebrow"><i class="bi bi-question-circle"></i> FAQ</span>
-          <h2 class="mb-0">Before you call</h2>
-        </div>
+        <div class="sec-rule"><span>04 fault classes</span></div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
+        <div class="row sec-grid">
+          <div class="col-lg-3 rail">
+            <p class="folio">§ 02</p>
+            <p class="sec-name">What we handle<i aria-hidden="true"></i></p>
+            <p class="rail-note">Most satellite radio faults fall into the same handful of buckets
+              &mdash; and four of them account for nearly every call that reaches us at three in
+              the morning.</p>
+          </div>
+
+          <div class="col-lg-9 sec-body">
+            <h2>Four problems, one phone call</h2>
+            <p class="deck">Here is where our specialists spend the day, hour by hour, on the line.</p>
+
+            <div class="ledger-list">
+              <article class="ledger-row reveal">
+                <p class="ord" aria-hidden="true">01</p>
+                <div>
+                  <h3><i class="bi bi-power" aria-hidden="true"></i>Radio &amp; audio</h3>
+                  <p>Dead head unit, silent speakers, distorted or cutting-out sound, presets that
+                    won&rsquo;t hold.</p>
+                </div>
+              </article>
+
+              <article class="ledger-row reveal">
+                <p class="ord" aria-hidden="true">02</p>
+                <div>
+                  <h3><i class="bi bi-reception-4" aria-hidden="true"></i>Signal &amp; reception</h3>
+                  <p>&ldquo;Acquiring signal&rdquo; that never finishes, drops under bridges, antenna and
+                    cable checks.</p>
+                </div>
+              </article>
+
+              <article class="ledger-row reveal">
+                <p class="ord" aria-hidden="true">03</p>
+                <div>
+                  <h3><i class="bi bi-collection-play" aria-hidden="true"></i>Channels</h3>
+                  <p>Missing stations, a lineup that shrank overnight, locked or greyed-out channels.</p>
+                </div>
+              </article>
+
+              <article class="ledger-row reveal">
+                <p class="ord" aria-hidden="true">04</p>
+                <div>
+                  <h3><i class="bi bi-credit-card-2-front" aria-hidden="true"></i>Subscription</h3>
+                  <p>Plan questions, renewals, transferring service to a new vehicle, account access.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= STATS BAND -->
+    <section class="stats-band" aria-label="Service record">
+      <div class="container">
+        <p class="stats-epigraph">It is 11:47 pm somewhere. The line is open.</p>
+
+        <div class="stats-grid">
+          <div>
+            <p class="stat-num" data-count="30" data-prefix="&lt;" data-suffix="s">&lt;30s</p>
+            <p class="stat-label">Average pickup time</p>
+          </div>
+          <div>
+            <p class="stat-num">24/7</p>
+            <p class="stat-label">Every day of the year</p>
+          </div>
+          <div>
+            <p class="stat-num" data-count="100" data-suffix="%">100%</p>
+            <p class="stat-label">Live humans, no bots</p>
+          </div>
+          <div>
+            <p class="stat-num">All</p>
+            <p class="stat-label">Vehicle makes &amp; models</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================== NOTICE -->
+    <section class="sec sec--paper">
+      <div class="container">
+        <div class="row sec-grid">
+          <div class="col-lg-9 offset-lg-3">
+            <div class="notice reveal">
+              <span class="mlabel">Notice &mdash; self-service tools offline</span>
+              <h3>Online refresh and diagnostic tools are unavailable right now.</h3>
+              <p>
+                They are down for maintenance. Everything they used to do can still be done over
+                the phone &mdash;
+                <a class="link-inline" href="tel:+10000000000" data-call>call +1 (000) 000-0000</a>
+                and a specialist will run it for you while you wait.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================== § 03 — THE SERVICES -->
+    <section class="sec sec--kraft" id="services">
+      <div class="container">
+        <div class="sec-rule"><span>06 entries</span></div>
+
+        <div class="row sec-grid">
+          <div class="col-lg-3 rail">
+            <p class="folio">§ 03</p>
+            <p class="sec-name">Services<i aria-hidden="true"></i></p>
+            <p class="rail-note">A specialist works the problem with you, on the line, until it plays
+              &mdash; or until you have a straight answer about what the vehicle needs next.</p>
+          </div>
+
+          <div class="col-lg-9 sec-body">
+            <h2>What a call actually gets you</h2>
+            <p class="deck">No scripts read at you &mdash; and an honest answer if it needs a shop.</p>
+
+            <div class="svc-grid">
+              <article class="svc reveal">
+                <i class="bi bi-broadcast-pin" aria-hidden="true"></i>
+                <h3>Activation &amp; re-activation</h3>
+                <p>New vehicle, used vehicle, or a trial that never switched on. We walk through
+                  radio ID lookup, send the refresh, and stay on the line until channels appear.</p>
+              </article>
+
+              <article class="svc reveal">
+                <i class="bi bi-reception-2" aria-hidden="true"></i>
+                <h3>Signal &amp; reception diagnosis</h3>
+                <p>We isolate whether it&rsquo;s the antenna, the cable, the mount, the location or
+                  the receiver &mdash; so you don&rsquo;t pay a shop to find out.</p>
+              </article>
+
+              <article class="svc reveal">
+                <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+                <h3>Channel lineup restore</h3>
+                <p>Channels vanished after an update or a plan change? We check what your package
+                  should carry and rebuild the lineup on the receiver.</p>
+              </article>
+
+              <article class="svc reveal">
+                <i class="bi bi-receipt" aria-hidden="true"></i>
+                <h3>Subscription &amp; billing guidance</h3>
+                <p>Understand what you&rsquo;re on, what renews when, and how to move service to a
+                  different car &mdash; explained in plain English.</p>
+              </article>
+
+              <article class="svc reveal">
+                <i class="bi bi-bluetooth" aria-hidden="true"></i>
+                <h3>Pairing &amp; head-unit setup</h3>
+                <p>Bluetooth handoff, steering-wheel controls, presets, and factory head units that
+                  lost their settings after a battery change.</p>
+              </article>
+
+              <article class="svc reveal">
+                <i class="bi bi-life-preserver" aria-hidden="true"></i>
+                <h3>Second-opinion troubleshooting</h3>
+                <p>Already been round the loop elsewhere? Call and we&rsquo;ll tell you what&rsquo;s
+                  actually wrong &mdash; even if the answer is &ldquo;this one needs hardware.&rdquo;</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== § 04 — HOW IT WORKS -->
+    <section class="sec sec--paper" id="how">
+      <div class="container">
+        <div class="sec-rule"><span>03 steps</span></div>
+
+        <div class="row sec-grid">
+          <div class="col-lg-3 rail">
+            <p class="folio">§ 04</p>
+            <p class="sec-name">How it works<i aria-hidden="true"></i></p>
+            <p class="rail-note">One call, start to finish. No ticket, no queue position, no
+              callback window to sit through.</p>
+          </div>
+
+          <div class="col-lg-9 sec-body">
+            <h2>Three steps, usually one call</h2>
+
+            <div class="steps">
+              <div class="step reveal">
+                <p class="step-ghost" aria-hidden="true">01</p>
+                <h3>Call the helpline</h3>
+                <p>Dial +1 (000) 000-0000 from anywhere in the US. A specialist picks up in under
+                  half a minute &mdash; day or night.</p>
+              </div>
+
+              <div class="step reveal">
+                <p class="step-ghost" aria-hidden="true">02</p>
+                <h3>Describe the symptom</h3>
+                <p>Tell us what the radio is doing. Have the vehicle nearby if you can &mdash; we may
+                  ask you to read the radio ID off the screen.</p>
+              </div>
+
+              <div class="step reveal">
+                <p class="step-ghost" aria-hidden="true">03</p>
+                <h3>Fix it on the line</h3>
+                <p>We work the steps with you until sound is back, or give you a straight answer
+                  about what the vehicle needs next.</p>
+              </div>
+            </div>
+
+            <div class="how-close">
+              <p>No ticket number, no callback window &mdash; the fix happens while you are still holding the phone.</p>
+              <a class="btn-call btn-call-lg" href="tel:+10000000000" data-call>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>Start with a call
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== § 05 — WHY US -->
+    <section class="sec sec--kraft" id="why-us">
+      <div class="container">
+        <div class="sec-rule"><span>04 claims</span></div>
+
+        <div class="row sec-grid">
+          <div class="col-lg-5 whyus__lead">
+            <p class="kicker">
+              <span class="folio">§ 05</span>
+              <i aria-hidden="true"></i>
+              <span class="k-name">Why us</span>
+            </p>
+
+            <h2>Built to answer the phone</h2>
+
+            <p class="deck drop">
+              Most support lines are designed to deflect you into a help centre. Ours is designed
+              around the one thing people actually want at 11 pm on a highway shoulder: someone
+              picking up.
+            </p>
+
+            <p class="lead-aside">No queue, no ticket, no upsell script &mdash; just the fastest
+              route back to sound coming out of the speakers.</p>
+          </div>
+
+          <div class="col-lg-7 split-rule">
+            <ul class="claims" role="list">
+              <li>
+                <span class="bar" aria-hidden="true"></span>
+                <div>
+                  <b>No hold queue</b>
+                  <p>Average pickup under 30 seconds, measured across every call we take &mdash; not
+                    a marketing number.</p>
+                </div>
+              </li>
+              <li>
+                <span class="bar" aria-hidden="true"></span>
+                <div>
+                  <b>Trained on real hardware</b>
+                  <p>Specialists who have handled factory and aftermarket receivers across every
+                    major vehicle make.</p>
+                </div>
+              </li>
+              <li>
+                <span class="bar" aria-hidden="true"></span>
+                <div>
+                  <b>Straight answers</b>
+                  <p>If it&rsquo;s a dead antenna or a failed tuner, we say so instead of keeping you
+                    on the line.</p>
+                </div>
+              </li>
+              <li>
+                <span class="bar" aria-hidden="true"></span>
+                <div>
+                  <b>Independent</b>
+                  <p>We work for you, not for a manufacturer&rsquo;s call-deflection target.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="proof whyus__panel">
+              <div class="proof-head">
+                <h3 class="mlabel with-dot"><span class="live-dot" aria-hidden="true"></span>Talk to a person, first ring</h3>
+                <span class="mlabel">No IVR</span>
+              </div>
+
+              <p class="proof-sub">No IVR maze. No &ldquo;press 4 for&hellip;&rdquo;</p>
+
+              <dl class="ledger">
+                <div><dt>Mon &ndash; Sun</dt><dd>24 hours</dd></div>
+                <div><dt>Holidays</dt><dd class="is-ok">Open</dd></div>
+                <div><dt>Callback required</dt><dd>Never</dd></div>
+                <div><dt>Diagnosis over the phone</dt><dd>Included</dd></div>
+              </dl>
+
+              <a class="btn-call btn-call-block" href="tel:+10000000000" data-call>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                <span class="num">+1 (000) 000-0000</span>
+              </a>
+
+              <p class="proof-foot">or email <a href="mailto:support@example.com">support@example.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= § 06 — FAQ -->
+    <section class="sec sec--paper" id="faq">
+      <div class="container">
+        <div class="sec-rule"><span>05 questions</span></div>
+
+        <div class="row sec-grid">
+          <div class="col-lg-3 rail faq-rail">
+            <p class="folio">§ 06</p>
+            <p class="sec-name">Before you call<i aria-hidden="true"></i></p>
+            <p class="rail-note">Five things worth knowing, and one worth reading twice &mdash; the
+              first. It is the question every caller asks before they trust us with the receiver.</p>
+          </div>
+
+          <div class="col-lg-9 sec-body">
+            <h2>Questions we answer daily</h2>
+
             <div class="accordion" id="faqAccordion">
 
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq1" aria-expanded="true">
+                    data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                     Are you the satellite radio company itself?
+                    <span class="acc-sign" aria-hidden="true"></span>
                   </button>
                 </h3>
                 <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
@@ -495,8 +558,9 @@
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq2">
+                    data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
                     What should I have ready when I call?
+                    <span class="acc-sign" aria-hidden="true"></span>
                   </button>
                 </h3>
                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -511,8 +575,9 @@
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq3">
+                    data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                     How long does a typical call take?
+                    <span class="acc-sign" aria-hidden="true"></span>
                   </button>
                 </h3>
                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -527,8 +592,9 @@
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq4">
+                    data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
                     Do you support older and aftermarket receivers?
+                    <span class="acc-sign" aria-hidden="true"></span>
                   </button>
                 </h3>
                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -542,8 +608,9 @@
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq5">
+                    data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
                     Is the helpline really open at night?
+                    <span class="acc-sign" aria-hidden="true"></span>
                   </button>
                 </h3>
                 <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -560,37 +627,56 @@
       </div>
     </section>
 
-    <!-- ========================================================= CONTACT -->
-    <section class="section bg-soft" id="contact">
+    <!-- =================================================== § 07 — CONTACT -->
+    <section class="sec sec--kraft" id="contact">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="contact-frame reveal">
-              <div class="contact-inner">
-                <span class="eyebrow"><i class="bi bi-telephone-outbound"></i> Contact</span>
-                <h2 class="mb-3">One number. Any satellite radio problem.</h2>
-                <p class="lead-sm mx-auto mb-4" style="max-width:560px;">
-                  Lines are open now and a specialist is free. Most callers are back on air before
-                  they&rsquo;ve finished explaining the problem.
-                </p>
+        <div class="sec-rule"><span>line open</span></div>
 
-                <a class="hero-phone mb-4" href="tel:+10000000000" data-call>
-                  <i class="bi bi-telephone-inbound-fill"></i> +1 (000) 000-0000
-                </a>
+        <div class="row sec-grid">
+          <div class="col-lg-7 contact__lead">
+            <p class="kicker">
+              <span class="folio">§ 07</span>
+              <i aria-hidden="true"></i>
+              <span class="k-name">Direct line</span>
+            </p>
 
-                <div class="d-flex justify-content-center mb-4">
-                  <a class="btn btn-call btn-call-lg" href="tel:+10000000000" data-call>
-                    <i class="bi bi-telephone-fill me-2"></i>Call the helpline
-                  </a>
-                </div>
+            <h2>One number. Any satellite radio problem.</h2>
 
-                <div class="contact-meta">
-                  <a href="mailto:support@example.com"><i class="bi bi-envelope-fill"></i>
-                    support@example.com</a>
-                  <span><i class="bi bi-clock-fill"></i> 24 hours &middot; 7 days</span>
-                  <span><i class="bi bi-geo-alt-fill"></i> Nationwide, United States</span>
-                </div>
+            <p class="deck">
+              Lines are open now and a specialist is free. Most callers are back on air before
+              they&rsquo;ve finished explaining the problem.
+            </p>
+
+            <a class="phone-contact" href="tel:+10000000000" data-call>+1 (000) 000-0000</a>
+            <span class="mark-wide" aria-hidden="true"></span>
+
+            <div class="cta-row">
+              <a class="btn-call btn-call-lg" href="tel:+10000000000" data-call>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>Call the helpline
+              </a>
+            </div>
+
+            <ul class="contact-meta" role="list">
+              <li><a href="mailto:support@example.com">support@example.com</a></li>
+              <li><span>24 hours &middot; 7 days</span></li>
+              <li><span>Nationwide, United States</span></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="proof contact__aside">
+              <div class="proof-head">
+                <h3 class="mlabel">Have this ready</h3>
+                <span class="mlabel">04</span>
               </div>
+              <ul class="checklist" role="list">
+                <li><span class="n" aria-hidden="true">01</span><span>Vehicle year, make and model</span></li>
+                <li><span class="n" aria-hidden="true">02</span><span>Radio ID from the receiver screen</span></li>
+                <li><span class="n" aria-hidden="true">03</span><span>What the radio is doing right now, in your own words</span></li>
+                <li><span class="n" aria-hidden="true">04</span><span>The account email, for a billing or subscription question</span></li>
+              </ul>
+              <p class="proof-foot">Not near the car? Call anyway &mdash; we can usually narrow it
+                down without it.</p>
             </div>
           </div>
         </div>
@@ -599,25 +685,41 @@
 
   </main>
 
-  <!-- ============================================================ FOOTER -->
+  <!-- ================================================ FOOTER — COLOPHON -->
   <footer class="site-footer">
     <div class="container">
-      <div class="row g-4 g-lg-5">
+      <div class="foot-grid">
 
-        <div class="col-lg-4">
-          <img src="assets/img/logo-light.svg" alt="RadioSat Support" class="mb-3">
-          <p class="mb-3" style="font-size:.94rem;">
+        <div class="foot-col">
+          <a class="brand" href="#top">
+            <svg class="brand-mark" width="32" height="32" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+              <rect x=".5" y=".5" width="33" height="33" rx="3" fill="none" stroke="currentColor" stroke-width="1"/>
+              <rect x="8" y="23" width="4" height="4" fill="#B4310F"/>
+              <path d="M13 25a9 9 0 0 0-3-6" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 25a14 14 0 0 0-4.6-10" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M23 25a19 19 0 0 0-6.2-13.6" fill="none" stroke="#B4310F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 28.5h22" stroke="currentColor" stroke-opacity=".45" stroke-width="1"/>
+            </svg>
+            <span class="brand-word">
+              <span class="brand-name">RadioSat Support</span>
+              <span class="brand-sub">24/7 Helpline</span>
+            </span>
+          </a>
+
+          <p class="foot-blurb">
             An independent telephone support service for car satellite radio &mdash; activation,
             signal, channels and subscriptions. Open 24/7.
           </p>
-          <a class="btn btn-call" href="tel:+10000000000" data-call>
-            <i class="bi bi-telephone-fill me-2"></i>+1 (000) 000-0000
+
+          <a class="btn-call" href="tel:+10000000000" data-call>
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span class="num">+1 (000) 000-0000</span>
           </a>
         </div>
 
-        <div class="col-6 col-lg-2">
-          <h5>Site</h5>
-          <ul class="footer-list">
+        <div class="foot-col">
+          <h3 class="foot-head">Site</h3>
+          <ul class="foot-list" role="list">
             <li><a href="#services">Services</a></li>
             <li><a href="#how">How it works</a></li>
             <li><a href="#why-us">Why us</a></li>
@@ -626,9 +728,9 @@
           </ul>
         </div>
 
-        <div class="col-6 col-lg-2">
-          <h5>Help with</h5>
-          <ul class="footer-list">
+        <div class="foot-col">
+          <h3 class="foot-head">Help with</h3>
+          <ul class="foot-list" role="list">
             <li><a href="#services">Activation</a></li>
             <li><a href="#services">Signal issues</a></li>
             <li><a href="#services">Missing channels</a></li>
@@ -636,34 +738,35 @@
           </ul>
         </div>
 
-        <div class="col-lg-4">
-          <h5>Legal</h5>
+        <div class="foot-col">
+          <h3 class="foot-head">Legal</h3>
           <!-- ==== EDIT: your real registered entity details ==== -->
-          <ul class="footer-list mb-3">
-            <li>RadioSat Support LLC</li>
-            <li>Reg. no. 000000000</li>
-            <li>123 Example Street, City, ST 00000</li>
-            <li><a href="mailto:support@example.com">support@example.com</a></li>
-          </ul>
-          <div class="disclaimer">
-            <strong>Disclaimer:</strong> RadioSat Support is an independent third-party service
-            provider. We are not affiliated with, authorised by, sponsored by or endorsed by any
-            satellite radio provider, broadcaster or vehicle manufacturer. All trademarks, brand
-            names and logos are the property of their respective owners and are used for
-            identification purposes only.
-          </div>
+          <dl class="entity">
+            <div><dt>Entity</dt><dd>RadioSat Support LLC</dd></div>
+            <div><dt>Reg. no.</dt><dd class="num">000000000</dd></div>
+            <div><dt>Address</dt><dd>123 Example Street, City, ST 00000</dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:support@example.com">support@example.com</a></dd></div>
+          </dl>
         </div>
 
       </div>
 
+      <div class="disclaimer">
+        <p>
+          <strong>Disclaimer:</strong> RadioSat Support is an independent third-party service
+          provider. We are not affiliated with, authorised by, sponsored by or endorsed by any
+          satellite radio provider, broadcaster or vehicle manufacturer. All trademarks, brand
+          names and logos are the property of their respective owners and are used for
+          identification purposes only.
+        </p>
+      </div>
+
       <div class="footer-bottom">
-        <div class="d-flex flex-wrap justify-content-between gap-2">
-          <span>&copy; <span id="year">2026</span> RadioSat Support. All rights reserved.</span>
-          <span class="d-flex gap-3">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-          </span>
-        </div>
+        <span>&copy; <span id="year">2026</span> RadioSat Support. All rights reserved.</span>
+        <ul role="list">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
       </div>
     </div>
   </footer>
@@ -671,7 +774,12 @@
   <!-- ================================================= MOBILE CALL BAR -->
   <div class="call-bar">
     <a href="tel:+10000000000" data-call>
-      <i class="bi bi-telephone-fill"></i> Call +1 (000) 000-0000
+      <span class="call-bar__ico" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="call-bar__txt">
+        <span class="call-bar__lab">Line open &middot; 24 hours</span>
+        <span class="call-bar__num">+1 (000) 000-0000</span>
+      </span>
+      <span class="call-bar__act"><i class="bi bi-telephone-fill" aria-hidden="true"></i><span class="t">Call</span></span>
     </a>
   </div>
 
