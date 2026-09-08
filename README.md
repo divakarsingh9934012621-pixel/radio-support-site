@@ -29,8 +29,8 @@ the counts are there so you can check nothing was missed.
 | Detail | Current value | Occurrences |
 | --- | --- | --- |
 | Brand name | `RadioSats` | 10 in `index.html`, plus `aria-label` in the 3 SVGs |
-| Helpline, displayed | `+1 (786) 454-4567` | 11 |
-| Helpline, `tel:` form | `+17864544567` | 13 |
+| Helpline, displayed | `+1 (844) 654-4009` (toll-free) | 11 |
+| Helpline, `tel:` form | `+18446544009` | 13 |
 | Email | `Info@radiosats.com` | 6 |
 | Domain (`canonical`, `og:url`) | `https://radiosats.com` | 5 |
 
