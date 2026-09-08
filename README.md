@@ -93,17 +93,34 @@ If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
 
 ## Still to do
 
-- **`privacy.html` and `terms.html` don't exist**, but the footer links to them — both are
-  dead links. Google Ads generally won't approve a support-service site without them.
 - **The footer entity block is still dummy data** — `Reg. no. 000000000` and
-  `123 Example Street, City, ST 00000`. Search `index.html` for `EDIT:`.
-- **"Toll-free" is inaccurate.** The hero trust chips advertise the line as toll-free, but
-  786 is a Miami area code, so callers pay normal rates. Either change the wording or use a
-  real 800/888 number.
-- Confirm `https://radiosats.com` is the final domain before going live — it's baked into
-  the `canonical` and `og:url` tags.
-- **`og-cover.png` doesn't match the current design.** It was drawn for the deep-red
-  redesign, so link previews on WhatsApp, Facebook and X will look nothing like the page.
+  `123 Example Street, City, ST 00000`. Search `index.html` for `EDIT:`. The same registered
+  details are referred to from `privacy.html` and `terms.html`.
+- **Call tracking is not connected.** `assets/js/main.js` has the `gtag` conversion block
+  written but commented out, and `index.html` carries no Google tag, so the site currently
+  reports zero calls. Needs a Google Ads conversion ID.
+- **The domain is not pointed.** `canonical`, `og:url`, `robots.txt` and `sitemap.xml` all say
+  `https://radiosats.com`, but the site serves from github.io. Add a `CNAME` file and set the
+  DNS records at the registrar.
+- **`og-cover.png` does not match the design.** It was drawn for a deep-red redesign that was
+  reverted, so link previews on WhatsApp, Facebook and X look nothing like the page.
+- **Legal pages need a review.** `privacy.html` and `terms.html` are working drafts written to
+  match how the service actually operates, and each carries a visible review note. Confirm the
+  call-recording and retention wording in the privacy policy, and the governing state and
+  charging model in the terms, then have a qualified adviser check both.
+- **Structured data says `LocalBusiness`**, which expects a real street address. For a
+  nationwide phone service `Organization` or `Service` is a better fit.
+
+## Pages
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | The single-page site |
+| `privacy.html` | Privacy policy |
+| `terms.html` | Terms of service |
+| `404.html` | Not-found page; uses absolute asset paths so it works from any URL depth |
+| `robots.txt` | Allows indexing, points at the sitemap |
+| `sitemap.xml` | The three indexable pages |
 
 ## Compliance note
 
