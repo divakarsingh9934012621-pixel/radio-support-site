@@ -99,9 +99,9 @@ If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
 - **Call tracking is not connected.** `assets/js/main.js` has the `gtag` conversion block
   written but commented out, and `index.html` carries no Google tag, so the site currently
   reports zero calls. Needs a Google Ads conversion ID.
-- **The domain is not pointed.** `canonical`, `og:url`, `robots.txt` and `sitemap.xml` all say
-  `https://radiosats.com`, but the site serves from github.io. Add a `CNAME` file and set the
-  DNS records at the registrar.
+- ~~Point the domain~~ **Done.** `radiosats.com` is served by Vercel (project `radio-support-site`,
+  every push to `main` redeploys). DNS is hosted on Vercel's nameservers; `www` redirects to the
+  root with a 308. The github.io copy still exists but the canonical tags point at radiosats.com.
 - **`og-cover.png` does not match the design.** It was drawn for a deep-red redesign that was
   reverted, so link previews on WhatsApp, Facebook and X look nothing like the page.
 - **Legal pages need a review.** `privacy.html` and `terms.html` are working drafts written to
