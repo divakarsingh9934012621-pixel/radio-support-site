@@ -93,9 +93,9 @@ If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
 
 ## Still to do
 
-- **The footer entity block is still dummy data** — `Reg. no. 000000000` and
-  `123 Example Street, City, ST 00000`. Search `index.html` for `EDIT:`. The same registered
-  details are referred to from `privacy.html` and `terms.html`.
+- **The registration number is still a placeholder** — `Reg. no. 000000000` in the footer.
+  Search `index.html` for `EDIT:`. The registered address (30 N Gould St Ste R, Sheridan,
+  WY 82801) is in place on every page and in the structured data.
 - **Call tracking is not connected.** `assets/js/main.js` has the `gtag` conversion block
   written but commented out, and `index.html` carries no Google tag, so the site currently
   reports zero calls. Needs a Google Ads conversion ID.
