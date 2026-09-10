@@ -1,3 +1,14 @@
+/* ------------------------------------------------------------------
+   Google Ads call-conversion label.
+   The Google tag (AW-18441096809) is installed in the <head> of every
+   page. To count call-button taps as a Google Ads CONVERSION, paste the
+   label here — it is the part after the slash in the "send_to" value
+   shown at Google Ads > Goals > Conversions > (your call conversion) >
+   Tag setup, e.g. 'AbC-dEfGhIjKlMnOp'. Leave empty to only log the
+   engagement event.
+   ------------------------------------------------------------------ */
+var RADIOSATS_CONVERSION_LABEL = '';
+
 /* =========================================================================
    RadioSat Support — page behaviour
    Vanilla JS, no dependencies beyond the Bootstrap bundle already loaded.
@@ -104,10 +115,14 @@
      ------------------------------------------------------------------- */
   document.querySelectorAll('a[data-call]').forEach(function (link) {
     link.addEventListener('click', function () {
-      // Google Ads example — uncomment and set your own conversion id/label:
-      // if (typeof gtag === 'function') {
-      //   gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/YYYYYYYYYYYY' });
-      // }
+      if (typeof gtag === 'function') {
+        // Always record the tap as an engagement event on the Google tag.
+        gtag('event', 'click_to_call', { event_category: 'engagement', event_label: link.getAttribute('href') });
+        // Count it as a Google Ads conversion once the conversion label is set (top of file).
+        if (RADIOSATS_CONVERSION_LABEL) {
+          gtag('event', 'conversion', { send_to: 'AW-18441096809/' + RADIOSATS_CONVERSION_LABEL });
+        }
+      }
       if (typeof console !== 'undefined') {
         console.debug('[call] CTA clicked:', link.getAttribute('href'));
       }

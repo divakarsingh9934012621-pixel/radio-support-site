@@ -81,15 +81,18 @@ deep-red editorial redesign also exists in the history — restore it with
 
 ## Call tracking
 
-Every phone link carries `data-call`. `main.js` has one handler for all of them —
-uncomment the `gtag` block at the bottom of the file and paste your conversion ID:
+The Google tag `AW-18441096809` is installed in the `<head>` of every page. Every phone link
+carries `data-call`, and `main.js` sends a `click_to_call` event for each tap.
+
+To count taps as Google Ads **conversions**, paste the conversion label into the constant at
+the top of `assets/js/main.js`:
 
 ```js
-gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/YYYYYYYYYYYY' });
+var RADIOSATS_CONVERSION_LABEL = 'AbC-dEfGhIjKlMnOp';   // from Google Ads > Goals > Conversions
 ```
 
-If you add Google Ads call reporting, put the `gtag.js` snippet in `<head>` of
-`index.html` above `main.js`.
+It is the part after the slash in the `send_to` value Google shows under the conversion's
+*Tag setup*. Until it is set, taps are logged as engagement events only.
 
 ## Still to do
 
